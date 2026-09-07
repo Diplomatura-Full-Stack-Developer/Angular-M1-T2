@@ -1,5 +1,10 @@
 <div class="flex flex-col p-4 md:p-8 gap-4 md:gap-8">
-  <h1 class="text-accent-700 text-3xl font-bold underline text-center text-shadow-md">
+  <h1
+    [ngStyle]="{
+      color: registerForm.invalid ? 'var(--color-accent-700)' : 'var(--color-primary-700)',
+    }"
+    class="text-3xl font-bold underline text-center text-shadow-md"
+  >
     {{ title }}
   </h1>
   <p class="text-accent-700 text-sm text-center">
@@ -8,9 +13,9 @@
   <form
     [formGroup]="registerForm"
     (ngSubmit)="onSubmit()"
-    class="flex flex-col p-4 md:p-8 gap-4 md:gap-8"
+    class="flex flex-col p-4 md:py-8 md:px-48 gap-4 md:gap-8"
   >
-    <label for="name">Nombre</label>
+    <label for="name" class="text-primary-700 font-bold text-lg text-shadow-md">Nombre</label>
     <input
       type="text"
       id="name"
@@ -21,10 +26,10 @@
       }"
     />
     @if (errorMessage('name'); as error) {
-      <p class="text-red-600 text-sm">{{ error }}</p>
+      <p class="text-accent-700 text-sm">{{ error }}</p>
     }
 
-    <label for="email">Email</label>
+    <label for="email" class="text-primary-700 font-bold text-lg text-shadow-md">Email</label>
     <input
       type="email"
       id="email"
@@ -35,10 +40,10 @@
       }"
     />
     @if (errorMessage('email'); as error) {
-      <p class="text-red-600 text-sm">{{ error }}</p>
+      <p class="text-accent-700 text-sm">{{ error }}</p>
     }
 
-    <label for="message">Mensaje</label>
+    <label for="message" class="text-primary-700 font-bold text-lg text-shadow-md">Mensaje</label>
     <input
       type="text"
       id="message"
@@ -49,9 +54,15 @@
       }"
     />
     @if (errorMessage('message'); as error) {
-      <p class="text-red-600 text-sm">{{ error }}</p>
+      <p class="text-accent-700 text-sm">{{ error }}</p>
     }
-    <button type="submit" class="bg-blue-500 text-white rounded-md p-2 cursor-pointer">
+    <button
+      [disabled]="registerForm.invalid"
+      [ngClass]="{
+        'cursor-not-allowed! bg-gray-500! opacity-60 text-black!': registerForm.invalid,
+      }"
+      class="bg-primary-500 text-white rounded-md p-2 cursor-pointer font-bold md:w-1/6 mx-auto"
+    >
       Enviar
     </button>
   </form>

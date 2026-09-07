@@ -1,21 +1,25 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
-import { inject } from '@angular/core';
-import { REGISTER_FORM_SCHEMA } from '../../validators/register-form.schema';
-import { NgClass } from '@angular/common';
-import { RegisterField, fieldErrorMessage } from '../../validators/register-form.schema';
+import { NgClass, NgStyle } from '@angular/common';
+import { MatDialog } from '@angular/material/dialog';
+import {
+  REGISTER_FORM_SCHEMA,
+  RegisterField,
+  fieldErrorMessage,
+} from '../../validators/register-form.schema';
+import { ConfirmDialog } from '../../shared/ui/confirm-dialog/confirm-dialog';
 
 @Component({
   selector: 'app-register',
-  imports: [ReactiveFormsModule, NgClass],
+  imports: [ReactiveFormsModule, NgClass, NgStyle],
   templateUrl: './register.html',
 })
 export class Register {
   title: string = 'Registro de usuario';
   description: string = 'Por favor, complete el formulario para registrarse.';
 
-  private formBuilder = inject(FormBuilder)
-
+  private formBuilder = inject(FormBuilder);
+  private dialog = inject(MatDialog);
 
   registerForm = this.formBuilder.group({
     name: ['', REGISTER_FORM_SCHEMA.name.validators],
@@ -27,19 +31,33 @@ export class Register {
     const control = this.registerForm.controls[field];
     return control.touched && control.invalid;
   }
+
   errorMessage(field: RegisterField): string | null {
     return fieldErrorMessage(field, this.registerForm.controls[field]);
   }
 
-
   onSubmit() {
     if (this.registerForm.invalid) {
-      console.log("Formulario inválido");
+      console.log('Formulario inválido');
       this.registerForm.markAllAsTouched();
       return;
     }
 
-    console.log(this.registerForm.value);
+    const { name, email, message } = this.registerForm.value;
+
+    this.dialog
+      .open(ConfirmDialog, {
+        data: {
+          title: 'Formulario enviado correctamente',
+          name: `Nombre: ${name}`,
+          email: `Email: ${email}`,
+          message: `Mensaje: ${message}`,
+        },
+        restoreFocus: false,
+      })
+      .afterClosed()
+      .subscribe(() => {
+        this.registerForm.reset();
+      });
   }
 }
-
