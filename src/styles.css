@@ -19,6 +19,27 @@
   .scrollbar-hide::-webkit-scrollbar {
     display: none;
   }
+
+  h1 {
+    @apply text-lg font-bold text-accent-700 text-shadow-sm;
+    @media (min-width: 768px) {
+      @apply text-2xl text-shadow-lg;
+    }
+  }
+  h2,
+  label {
+    @apply text-sm font-bold text-primary-700 text-shadow-sm;
+    @media (min-width: 768px) {
+      @apply text-lg text-shadow-lg;
+    }
+  }
+
+  input {
+    @apply border border-gray-300 rounded-md p-2 text-sm;
+    @media (min-width: 768px) {
+      @apply text-lg;
+    }
+  }
 }
 
 @font-face {

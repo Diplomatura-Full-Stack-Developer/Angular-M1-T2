@@ -1,9 +1,9 @@
 <div class="flex flex-col p-4 md:p-8 gap-4 md:gap-8">
   <h1
+    class="text-center"
     [ngStyle]="{
       color: registerForm.invalid ? 'var(--color-accent-700)' : 'var(--color-primary-700)',
     }"
-    class="text-3xl font-bold underline text-center text-shadow-md"
   >
     {{ title }}
   </h1>
@@ -15,12 +15,11 @@
     (ngSubmit)="onSubmit()"
     class="flex flex-col p-4 md:py-8 md:px-48 gap-4 md:gap-8"
   >
-    <label for="name" class="text-primary-700 font-bold text-lg text-shadow-md">Nombre</label>
+    <label for="name">Nombre</label>
     <input
       type="text"
       id="name"
       formControlName="name"
-      class="border border-gray-300 rounded-md p-2"
       [ngClass]="{
         'border-red-500': isInvalid('name'),
       }"
@@ -29,12 +28,11 @@
       <p class="text-accent-700 text-sm">{{ error }}</p>
     }
 
-    <label for="email" class="text-primary-700 font-bold text-lg text-shadow-md">Email</label>
+    <label for="email">Email</label>
     <input
       type="email"
       id="email"
       formControlName="email"
-      class="border border-gray-300 rounded-md p-2"
       [ngClass]="{
         'border-red-500': isInvalid('email'),
       }"
@@ -43,12 +41,11 @@
       <p class="text-accent-700 text-sm">{{ error }}</p>
     }
 
-    <label for="message" class="text-primary-700 font-bold text-lg text-shadow-md">Mensaje</label>
+    <label for="message">Mensaje</label>
     <input
       type="text"
       id="message"
       formControlName="message"
-      class="border border-gray-300 rounded-md p-2"
       [ngClass]="{
         'border-red-500': isInvalid('message'),
       }"
