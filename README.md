@@ -6,7 +6,10 @@
 
 ### Unidad 2: Angular básico. Directivas y Formularios.
 
-### Consigna: Formulario interactivo.
+### Tarea 2: Formulario interactivo.
+
+
+### Objetivos:
 
 Utiliza directivas estándar, directivas de atributos y el sistema de formularios reactivos en Angular,
 aplicando validaciones y estilos dinámicos.
