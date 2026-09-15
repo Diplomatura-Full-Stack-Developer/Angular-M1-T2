@@ -8,7 +8,6 @@
 
 ### Tarea 2: Formulario interactivo.
 
-
 ### Objetivos:
 
 Utiliza directivas estándar, directivas de atributos y el sistema de formularios reactivos en Angular,
@@ -17,23 +16,23 @@ aplicando validaciones y estilos dinámicos.
 ### Consideraciones:
 
 - Se utiliza un componente de dialogo de Angular Material para mostrar el mensaje de éxito del formulario enviado
-  y los datos cargados en el formulario. Angular Material permite personalizar el contenido de sus componentes.
+  y los datos cargados en el formulario. Angular Material permite personalizar el contenido de sus componentes.<br>
 
 - No se utilizan ***ngIf** y ***ngFor** porque la documentación de Angular los marca como obsoletos. En su lugar angular
-  recomienda utilizar el **@if** y el **@for**.
+  recomienda utilizar el **@if** y el **@for**.<br>
 
 - En el caso de esta tarea en lugar de utilizar el **@for** para renderizar los mensajes de validaciones, se utiliza un
   esquema de validación externo al formulario, manteniendo un código del formulario más limpio y separando las responsabilidades.
-  El esquema enviará el mensaje de error correspondiente según como se esté complentando el formulario.
+  El esquema enviará el mensaje de error correspondiente según como se esté complentando el formulario.<br>
 
 ### Capturas de pantallas:
 
-- Se pueden observar la siguientes pantallas:
+- Se pueden observar la siguientes pantallas:<br>
 
-  - Formulario vacío de inicio de la aplicación.
-  - Mensajes de error en el formulario de acuerdo a las validaciones establecidas. Botón de enviar deshabilitado.
-  - Formulario completado correctamente. Cambio de color del título y habilitación del botón de enviar.
-  - Formulario enviado con éxito y dialogo mostrando los datos cargados en el formulario.
+  - Formulario vacío de inicio de la aplicación.<br>
+  - Mensajes de error en el formulario de acuerdo a las validaciones establecidas. Botón de enviar deshabilitado.<br>
+  - Formulario completado correctamente. Cambio de color del título y habilitación del botón de enviar.<br>
+  - Formulario enviado con éxito y dialogo mostrando los datos cargados en el formulario.<br>
 
 <table>
 <tr>
